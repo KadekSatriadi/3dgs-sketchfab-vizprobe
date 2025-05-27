@@ -34,7 +34,7 @@
   let controls: SPLAT.OrbitControls
   let animationFrameId: number
 
-  const emit = defineEmits(['frame'])
+  const emit = defineEmits(['frame', 'modelLoaded'])
 
   
   const setCameraView = (view: CameraView) => {
@@ -131,6 +131,7 @@
     controls = new SPLAT.OrbitControls(camera, renderer.canvas)
     controls.maxZoom = 1000;
     controls.minZoom = 0.00000001;
+    controls.zoomSpeed = 0;
     console.log('Controls', controls);
     // Disable user interaction if cameraControls is false
     // if (props.cameraControls === false) {
@@ -140,6 +141,7 @@
     // Set canvas size
     renderer.canvas.style.width = props.width + 'px'
     renderer.canvas.style.height = props.height + 'px'
+    renderer.canvas.style.backgroundColor = '#242424' // Set background color to black
   
     // Add canvas to container
     containerRef.value.appendChild(renderer.canvas)
@@ -172,6 +174,7 @@
             if (props.cameraViews?.length) {
        setCameraView(props.cameraViews[0])
       }
+      emit('modelLoaded', splat)
     } catch (error) {
       console.error('Error loading Gaussian Splatting model:', error)
     }

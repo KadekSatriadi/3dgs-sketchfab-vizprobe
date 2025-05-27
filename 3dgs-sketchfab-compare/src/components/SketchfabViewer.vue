@@ -52,6 +52,7 @@
     error?: () => void;
     autostart?: boolean;
     preload?: boolean;
+    scrollwheel?: number;
   }
   
   interface SketchfabClient {
@@ -111,11 +112,14 @@
       ui_stop: '1',
       ui_watermark: '1',
       ui_help: '0',
-      annotations_visible: '1'
+      annotations_visible: '1',
+      scrollwheel: '0',
     });
     return `${baseUrl}${props.modelId}/embed?${params.toString()}`;
   });
   
+  const emits = defineEmits(['viewerReady', 'annotationChanged']);
+
   onMounted(() => {
     // Initialize Sketchfab API
     const initViewer = () => {
@@ -125,6 +129,7 @@
       const client = new window.Sketchfab(iframe);
   
       client.init(props.modelId, {
+        scrollwheel: 0,
         success: (apiClient: SketchfabAPI) => {
           api.value = apiClient;
           
@@ -132,6 +137,7 @@
           
           api?.value?.addEventListener('viewerready', () => {
             console.log('Viewer is ready');
+            emits('viewerReady', api.value);
             
             // Get annotations once the viewer is ready
             api?.value?.getAnnotationList((err, annotationsList) => {
@@ -144,6 +150,7 @@
           });
   
           // Start the viewer
+          console.log(api.value);
           api.value.start();
         },
         error: () => {
