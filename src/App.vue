@@ -296,7 +296,7 @@ defineExpose({
           <GaussianViewer
             class="viewer"
             ref="gaussianViewerRef"
-            modelUrl="/gs/gs_50000.compressed.splat"
+            modelUrl="gs.splat"
             :width="839"
             :height="469"
             :cameraViews="cameraViews"
