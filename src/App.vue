@@ -132,7 +132,7 @@ const enableNextCameraButton = async (idx: number): Promise<void> => {
   cameraViews.value[idx].progress = 0;
 
   // Calculate timing parameters
-  const totalTime = 1000 ; // 3 minutes in milliseconds
+  const totalTime = 1000 * 15; //  in milliseconds
   const updateInterval = 10; // Update every 1 second
   const totalSteps = totalTime / updateInterval;
 
