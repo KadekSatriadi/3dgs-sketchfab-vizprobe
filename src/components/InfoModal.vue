@@ -12,8 +12,12 @@
         <li>1) Anda akan memulai dengan melihat model dari berbagai sudut pandang. </li>
         <li>2) Anda dapat mengubah posisi kamera dengan mengklik tombol di sebelah kiri.</li>
         <li>3) Setiap kamera memiliki nama dan keterangan, harap dibaca.</li>
-        <li>4) Setelah semua kamera dilihat, form kuisioner akan muncul di sebelah kanan.</li>
+        <li>4) Setelah semua kamera dilihat, form kuisioner akan muncul di atas list kamera.</li>
       </ul>
+
+      <p class="mt-3">Informasi lebih lengkap ada di video tutorial di bawah.</p>
+      <iframe class="mt-1" width="560" height="315" src="https://www.youtube.com/embed/tnkBJIpil1o?si=L9CJPaiVIUmnGcQ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
     </section>
     <footer class="modal-card-foot">
       <div class="buttons">

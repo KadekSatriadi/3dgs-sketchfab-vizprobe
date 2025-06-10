@@ -37,9 +37,11 @@ const viewerReady = ref(false);
 
 const notify = (text: string) => {
   toast(text, {
-    autoClose: 5000,
-    position: "bottom-center",
-    theme: "dark",
+    theme: "auto",
+  type: "default",
+  position: "top-left",
+  closeOnClick: false,
+  hideProgressBar: true
   }); // ToastOptions
 };
 
@@ -64,6 +66,18 @@ const viewerReadyCheck = () => {
   }
 };
 
+const disableCameraButtons = () => {
+  cameraViews.value.forEach((cameraView) => {
+    cameraView.visited = false;
+  });
+};
+
+const enableCameraButtons = () => {
+  cameraViews.value.forEach((cameraView) => {
+    cameraView.visited = true;
+  });
+};
+
 onMounted(() => {
   import("./assets/cameras.json").then((module) => {
     const tmp = module.default;
@@ -83,7 +97,7 @@ onMounted(() => {
     cameraViews.value[0].visited = true;
     cameraViews.value[1].visited = true;
     cameraViews.value[0].isloaded = true;
-    cameraViews.value[1].isloaded = true;
+    cameraViews.value[1].isloaded = false;
     currentCameraView.value = cameraViews.value[0];
     if (camerasData.length > 0) {
       activeCameraName.value = camerasData[0].name;
@@ -118,7 +132,7 @@ const enableNextCameraButton = async (idx: number): Promise<void> => {
   cameraViews.value[idx].progress = 0;
 
   // Calculate timing parameters
-  const totalTime = 1000 * 15; // 3 minutes in milliseconds
+  const totalTime = 1000 ; // 3 minutes in milliseconds
   const updateInterval = 10; // Update every 1 second
   const totalSteps = totalTime / updateInterval;
 
@@ -166,25 +180,36 @@ const setCamera = (cameraView: CameraView) => {
   const idx = cameraViews.value.findIndex(
     (view) => view.name === cameraView.name
   );
-  if (isAllCamerasLoaded()) return;
+  if (isAllCamerasLoaded()) {
+    enableCameraButtons();
+    return;
+  }else if(!questionnaireReady.value === true){
+    disableCameraButtons();
+  }else{
+    return;
+  }
 
+  if(!cameraViews.value[idx].isloaded){
   enableNextCameraButton(idx).then(() => {
     cameraViews.value[idx].isloaded = true;
 
     if (cameraViews.value[idx + 1]) {
-      notify(
-        "Klik tombol Kamera " +
-          (idx + 2) +
-          " (" +
-          cameraViews.value[idx + 1].name +
-          ") di panel Kamera untuk melanjutkan."
-      );
+      // notify(
+      //   "Klik tombol Kamera " +
+      //     (idx + 2) +
+      //     " (" +
+      //     cameraViews.value[idx + 1].name +
+      //     ") di panel Kamera untuk melanjutkan."
+      // );
     } else {
       notify("Semua kamera sudah dilihat. Saatnya meingisi kuisioner");
       console.log(cameraViews.value);
+      enableCameraButtons();
     }
     checkQuestionnareReady();
   });
+  }
+
 };
 
 const isAllCamerasLoaded = () => {
@@ -288,8 +313,8 @@ defineExpose({
             modelId="e4a96f7b1b1d42f3b940c88411c1c3f9"
             :show-list="false"
             :loop="true"
-            width="839px"
-            height="469px"
+            width="850px"
+            height="400px"
             title="My 3D Model"
             @viewer-ready="setSketchfabReady"
           />
@@ -297,8 +322,8 @@ defineExpose({
             class="viewer"
             ref="gaussianViewerRef"
             modelUrl="gs.splat"
-            :width="839"
-            :height="469"
+            :width="850"
+            :height="400"
             :cameraViews="cameraViews"
             :controlButtons="false"
             :cameraControls="false"
