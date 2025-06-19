@@ -121,13 +121,14 @@ containerRef.value.style.height = props.height + 'px';
     const scale = 5
     // Load the splat file
     await viewer.addSplatScene(props.modelUrl, {
-      'streamView': true,
-      'halfPrecisionCovariancesOnGPU': false,
-      'splatAlphaRemovalThreshold': 1,
-      'showLoadingUI': false,
-      'position': [0, 0, 0],
-      'rotation': [0, 0, 0, 1],
-      'scale': [scale, scale, scale] // Scale the model to 5x its original size
+      progressiveLoad: false,
+      streamView: false,
+      halfPrecisionCovariancesOnGPU: false,
+      splatAlphaRemovalThreshold: 1,
+      showLoadingUI: false,
+      position: [0, 0, 0],
+      rotation: [0, 0, 0, 1],
+      scale: [scale, scale, scale] // Scale the model to 5x its original size
     })
 
     //.log('Gaussian Splats 3D model loaded successfully', viewer);
