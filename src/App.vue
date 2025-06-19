@@ -2,7 +2,7 @@
 import SketchfabViewer from "./components/SketchfabViewer.vue";
 import GaussianViewer from "./components/GaussianViewer.vue";
 import GoogleForm from "./components/GoogleForm.vue";
-import { ref, onMounted, initCustomFormatter } from "vue";
+import { ref, onMounted } from "vue";
 import { type CameraView } from "./types/cameraview";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
