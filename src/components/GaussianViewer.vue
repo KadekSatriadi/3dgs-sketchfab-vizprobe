@@ -142,7 +142,7 @@
     renderer.setSize(props.width || 800, props.height || 600)
     try {
       // Load the splat file
-      const splat = await SPLAT.Loader.LoadAsync(props.modelUrl, scene, () => {})
+      const splat = await SPLAT.Loader.LoadAsync(props.modelUrl, scene, () => {}, true)
       console.log('Splat loaded:', splat)
       const scale = 5;
       splat.scale = new SPLAT.Vector3(scale, scale, scale) // Scale the model to 100x its original size
