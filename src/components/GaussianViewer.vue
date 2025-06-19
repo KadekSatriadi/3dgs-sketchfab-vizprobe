@@ -34,7 +34,7 @@
   let controls: SPLAT.OrbitControls
   let animationFrameId: number
 
-  const emit = defineEmits(['frame', 'modelLoaded'])
+  const emit = defineEmits(['frame', 'modelLoaded', 'modelLoadError'])
 
   
   const setCameraView = (view: CameraView) => {
@@ -78,14 +78,7 @@
     setCameraView(props.cameraViews[currentViewIndex.value])
   }
   
-  // Expose methods to parent component
-  defineExpose({
-    nextView,
-    previousView,
-    setCameraView,
-    setFOV
-  })
-
+ 
 
 
   function setFOV(camera: SPLAT.Camera, fovDegrees: number): void {
@@ -176,6 +169,7 @@
       }
       emit('modelLoaded', splat)
     } catch (error) {
+      emit('modelLoadError', error)
       console.error('Error loading Gaussian Splatting model:', error)
     }
   }
@@ -190,6 +184,16 @@
     }
     renderer?.dispose()
   })
+
+   // Expose methods to parent component
+  defineExpose({
+    nextView,
+    previousView,
+    setCameraView,
+    setFOV,
+    initViewer
+  })
+
   </script>
   
   <style scoped>

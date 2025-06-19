@@ -2,7 +2,7 @@
 import SketchfabViewer from "./components/SketchfabViewer.vue";
 import GaussianViewer from "./components/GaussianViewer.vue";
 import GoogleForm from "./components/GoogleForm.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, initCustomFormatter } from "vue";
 import { type CameraView } from "./types/cameraview";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
@@ -21,6 +21,7 @@ const gaussianViewerRef = ref<{
   nextView: () => void;
   setCameraView: (cameraView: CameraView) => void;
   previousView: () => void;
+  initViewer: () => void;
 } | null>(null);
 
 const cameraState = ref({
@@ -225,6 +226,13 @@ const dumpCamera = (data: any) => {
   cameraState.value = data;
 };
 
+const loadGS = () => {
+  if (gaussianViewerRef.value) {
+    gaussianViewerRef.value.initViewer();
+  }
+  notify("Loading 3DGS model, please wait...");
+};
+
 defineExpose({
   cameraState,
   setCamera,
@@ -331,7 +339,15 @@ defineExpose({
             :focalLength="25.3083684786384"
             @frame="dumpCamera"
             @model-loaded="setGSViewerReady"
+            @model-load-error="(err) => {
+              console.error('Model load error:', err);
+              notify('Gagal memuat model 3DGS. Silakan coba click Load 3DGS.');
+            }"
           />
+          <button
+            v-if="!gsviewerReady"
+            class="button is-primary mt-3"
+            @click="loadGS">Load 3DGS</button>
         </div>
       </div>
       <footer>
