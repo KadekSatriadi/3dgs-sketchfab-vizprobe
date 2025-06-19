@@ -104,9 +104,8 @@ const initViewer = async () => {
           cameraUp: [0, -1, 0],
         initialCameraPosition: [-1, -4, 6],
         initialCameraLookAt: [0, 0, 0],
-        sharedMemoryForWorkers: false,
+        sharedMemoryForWorkers: true,
           renderMode: RenderMode.Always,
-      sceneRevealMode: SceneRevealMode.Instant ,
     })
 
     containerRef.value.style.width = props.width + 'px';
@@ -122,10 +121,10 @@ containerRef.value.style.height = props.height + 'px';
     const scale = 5
     // Load the splat file
     await viewer.addSplatScene(props.modelUrl, {
-      'streamView': false,
+      'streamView': true,
       'halfPrecisionCovariancesOnGPU': false,
       'splatAlphaRemovalThreshold': 1,
-      'showLoadingUI': true,
+      'showLoadingUI': false,
       'position': [0, 0, 0],
       'rotation': [0, 0, 0, 1],
       'scale': [scale, scale, scale] // Scale the model to 5x its original size
