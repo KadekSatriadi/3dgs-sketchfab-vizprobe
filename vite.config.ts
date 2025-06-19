@@ -13,7 +13,6 @@ export default defineConfig({
         });
       },
     },],
-  base: '/3dgs-sketchfab-compare/',
   assetsInclude: ['**/*.splat'],
   build: {
     rollupOptions: {
