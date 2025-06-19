@@ -104,7 +104,6 @@ const initViewer = async () => {
           cameraUp: [0, -1, 0],
         initialCameraPosition: [-1, -4, 6],
         initialCameraLookAt: [0, 0, 0],
-        sharedMemoryForWorkers: true,
           renderMode: RenderMode.Always,
     })
 
