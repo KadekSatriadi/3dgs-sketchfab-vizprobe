@@ -1,7 +1,7 @@
 export interface CameraView {
   name: string;
   position: number[];
-  euler: number[];
+  quaternion: number[];
   description: string;
   visited: boolean;
   isloading: boolean;

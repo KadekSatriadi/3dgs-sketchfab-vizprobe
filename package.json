@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mkkellogg/gaussian-splats-3d": "^0.4.7",
+    "@types/three": "^0.177.0",
     "bulma": "^1.0.4",
     "gsplat": "^1.2.4",
+    "three": "^0.177.0",
     "vue": "^3.5.13",
     "vue3-toastify": "^0.2.8"
   },

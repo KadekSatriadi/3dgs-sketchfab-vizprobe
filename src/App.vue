@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SketchfabViewer from "./components/SketchfabViewer.vue";
-import GaussianViewer from "./components/GaussianViewer.vue";
+import GaussianViewer from "./components/GaussianViewer3js.vue";
 import GoogleForm from "./components/GoogleForm.vue";
 import { ref, onMounted } from "vue";
 import { type CameraView } from "./types/cameraview";
@@ -25,8 +25,17 @@ const gaussianViewerRef = ref<{
 } | null>(null);
 
 const cameraState = ref({
-  position: [0, 0, 0],
-  rotation: [0, 0, 0, 1],
+  position: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
+  quaternion: {
+    x: 0,
+    y: 0,
+    z: 0,
+    w: 0,
+  },
 });
 
 const cameraViews = ref<CameraView[]>([]);
@@ -86,7 +95,7 @@ onMounted(() => {
       return {
         name: camera.name,
         position: camera.position,
-        euler: camera.euler,
+        quaternion: camera.quaternion,
         description: camera.description,
         visited: false,
         isloading: false,
@@ -204,7 +213,7 @@ const setCamera = (cameraView: CameraView) => {
       // );
     } else {
       notify("Semua kamera sudah dilihat. Saatnya meingisi kuisioner");
-      console.log(cameraViews.value);
+      //console.log(cameraViews.value);
       enableCameraButtons();
     }
     checkQuestionnareReady();
@@ -226,12 +235,6 @@ const dumpCamera = (data: any) => {
   cameraState.value = data;
 };
 
-const loadGS = () => {
-  if (gaussianViewerRef.value) {
-    gaussianViewerRef.value.initViewer();
-  }
-  notify("Loading 3DGS model, please wait...");
-};
 
 defineExpose({
   cameraState,
@@ -343,11 +346,7 @@ defineExpose({
               console.error('Model load error:', err);
               notify('Gagal memuat model 3DGS. Silakan coba click Load 3DGS.');
             }"
-          />
-          <button
-            v-if="!gsviewerReady"
-            class="button is-primary mt-3"
-            @click="loadGS">Load 3DGS</button>
+          />            
         </div>
       </div>
       <footer>
