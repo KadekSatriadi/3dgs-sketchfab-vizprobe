@@ -1,3 +1,26 @@
-/*
-  Cross-Origin-Embedder-Policy: credentialless
+# Pages that need SharedArrayBuffer (adjust to your actual routes)
+/webgl/*
+  Cross-Origin-Embedder-Policy: require-corp
   Cross-Origin-Opener-Policy: same-origin
+
+/threejs/*
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Opener-Policy: same-origin
+
+/wasm/*
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Opener-Policy: same-origin
+
+# Pages with iframes - no cross-origin isolation
+/about/*
+  X-Frame-Options: SAMEORIGIN
+
+/contact/*
+  X-Frame-Options: SAMEORIGIN
+
+/gallery/*
+  X-Frame-Options: SAMEORIGIN
+
+# Default for all other pages - no isolation
+/*
+  X-Frame-Options: SAMEORIGIN
