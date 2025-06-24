@@ -332,7 +332,7 @@ defineExpose({
           <GaussianViewer
             class="viewer"
             ref="gaussianViewerRef"
-            modelUrl="splat/gs.splat"
+            modelUrl="/gs.splat"
             :width="850"
             :height="400"
             :cameraViews="cameraViews"
