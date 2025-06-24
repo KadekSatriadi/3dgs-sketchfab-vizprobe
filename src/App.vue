@@ -332,7 +332,7 @@ defineExpose({
           <GaussianViewer
             class="viewer"
             ref="gaussianViewerRef"
-            modelUrl="/gs.splat"
+            modelUrl="https://kadeksatriadi.github.io/3dgs-sketchfab-compare/gs.splat"
             :width="850"
             :height="400"
             :cameraViews="cameraViews"
