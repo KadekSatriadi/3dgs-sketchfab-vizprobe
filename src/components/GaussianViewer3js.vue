@@ -29,7 +29,8 @@ const containerRef = ref<HTMLDivElement | null>(null)
 const currentViewIndex = ref(0)
 let viewer = new Viewer({
       renderMode: RenderMode.Always,
-      sceneRevealMode: SceneRevealMode.Instant ,
+      sceneRevealMode: SceneRevealMode.Instant,
+      sharedMemoryForWorkers: false
 }) 
 let animationFrameId: number
 
@@ -102,9 +103,10 @@ const initViewer = async () => {
     // Create viewer with configuration
     viewer = new Viewer({
           cameraUp: [0, -1, 0],
-        initialCameraPosition: [-1, -4, 6],
-        initialCameraLookAt: [0, 0, 0],
+          initialCameraPosition: [-1, -4, 6],
+          initialCameraLookAt: [0, 0, 0],
           renderMode: RenderMode.Always,
+          sharedMemoryForWorkers : false,
     })
 
     containerRef.value.style.width = props.width + 'px';
