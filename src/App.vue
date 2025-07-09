@@ -314,7 +314,7 @@ defineExpose({
           <div v-else>
             <h1 class="title mt-3">Loading model.</h1>
             <h3 class="subtitle">
-              Silakan tunggu, ini mungkin memakan waktu beberapa detik.
+              Silakan tunggu, ini mungkin memakan waktu beberapa menit.
             </h3>
           </div>
         </div>
