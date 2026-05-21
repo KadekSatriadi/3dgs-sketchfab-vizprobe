@@ -7,9 +7,9 @@
 This is a visualization probe used in the data collection of our paper. It compares photogrammetry and 3DGS visualization side by side guided by a list of camera positions. 
 A lot of functionalities of this visualization probe were designed for our study but feel free to download and adjust to your needs, or use it as a reference. 
 
-Note: the 3DGS model fails to load on the github page due to server configuration restrictions. Local web hosting should work. 
+Note: the 3DGS model fails to load on the github page due to server configuration restrictions. Local web hosting or hosting it through Netlify should work. 
 
-Live verstion: https://puri-klungkung-exp.netlify.app/
+Live verstion used in the study: https://puri-klungkung-exp.netlify.app/
 
 
 Cite this work as: 
