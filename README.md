@@ -1,8 +1,7 @@
 # Visualization Probe 
 ## Toward Human-Centred Evaluation of 3D Gaussian Splatting for Cultural Heritage Visualization
 
-<img width="1039" height="712" alt="image" src="https://github.com/user-attachments/assets/d665b976-d7d7-4bc4-ae75-40fa5ef40cf3" />
-
+<img width="1055" height="644" alt="Image" src="https://github.com/user-attachments/assets/461b36b7-2526-4630-b276-07330837b953" />
 
 This is a visualization probe used in the data collection of our paper. It compares photogrammetry and 3DGS visualization side by side guided by a list of camera positions. 
 A lot of functionalities of this visualization probe were designed for our study but feel free to download and adjust to your needs, or use it as a reference. 
