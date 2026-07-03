@@ -13,4 +13,11 @@ Live verstion used in the study: https://puri-klungkung-exp.netlify.app/
 
 Cite this work as: 
 
-TBA. 
+@article{arief2024towards,
+  title={Towards a human-centered evaluation of 3D Gaussian Splatting for cultural heritage visualization},
+  author={Arief, Fadilah Husna and Satriadi, Kadek Ananta and Champion, Erik Malcolm},
+  journal={Virtual Archaeology Review},
+  year={2024}
+}
+
+DOI: [https://doi.org/10.4995/var.2024.25551](https://doi.org/10.4995/var.2024.25551)
