@@ -350,13 +350,6 @@ defineExpose({
         </div>
       </div>
       <footer>
-        <small
-          >Punya pertanyaan? Silakan kontak Fadilah:
-          <a href="http://wa.me/6282119479539" target="_blank"
-            >http://wa.me/6282119479539</a
-          >. Halaman website ini adalah instrument penelitian. Mohon untuk tidak
-          menyebarluaskan.</small
-        >
       </footer>
     </div>
   </section>
